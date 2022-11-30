@@ -1,0 +1,39 @@
+
+body::before {
+    display: block;
+    content: '';
+    height: 60px;
+}
+
+.img-fluid.w-80.d-none.d-sm-block {
+    display: block;
+    max-width: 15%;
+    height: auto;
+  }
+
+.logincenter{
+  margin: auto;
+  width: 20%;
+}
+
+#bottom {
+    position: absolute;
+    bottom: 10px;
+    width: 100%
+}
+
+.center {
+  margin: auto;
+  width: 60%;
+  padding: 15px;
+}
+
+table, th, td {
+  border:1px solid black;
+}
+
+@media(min-width: 768px) {
+    .news-input {
+        width: 100%;
+    }
+}

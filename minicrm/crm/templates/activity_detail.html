@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+  <section class="center">
+    <h1 style="color:darkblue">Veikla</h1>
+    <br>
+  <h1>{{ book.title }}</h1>
+
+  <p><strong>Veikla:</strong> {{ activity.activity_type }}</p>
+  <p><strong>Klientas:</strong> {{ activity.customer }}</p>
+  <p><strong>Aprašymas:</strong> {{ activity.activity_description }}</p>
+  <p><strong>Parduoti vienetai:</strong> {{ activity.sold_units }}</p>
+  <p><strong>Vieneto kaina:</strong> {{ activity.price_per_unit }}</p>
+  <p><strong>Data:</strong> {{ activity.date }}</p>
+  <p><strong>Kitos veiklos data:</strong> {{ activity.date_next_activity }}</p>
+
+
+
+{% endblock %}

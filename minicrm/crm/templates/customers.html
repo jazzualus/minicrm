@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+  <section class="center">
+    <h1 style="color:darkblue">Klientų sąrašas</h1>
+    <p><strong>Vadybininko {{user}} klientų sąrašas</strong></p>
+    <table style="width:100%">
+      <tr>
+        <th>Įmonė</th>
+        <th>Statusas</th>
+        <th>Regionas</th>
+        <th>Adresas</th>
+        <th>Kontakt. asmuo</th>
+        <th>El. paštas</th>
+      </tr>
+    {% for customer in customers %}
+      <tr>
+        <td>{{customer.company}}</td>
+        <td>{{customer.status}}</td>
+        <td>{{customer.region}}</td>
+        <td>{{customer.address}}</td>
+        <td>{{customer.contact_person}}</td>
+        <td>{{customer.email}}</td>
+      </tr>
+    {% endfor %}
+      </table>
+    </section>
+{% endblock %}

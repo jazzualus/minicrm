@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+  <section class="center">
+    <h1 style="color:darkblue">Veiklų sąrašas</h1>
+    <p><strong>Vadybininko {{user}} veiklų sąrašas</strong></p>
+    <table style="width:100%">
+      <tr>
+        <th>Veikla</th>
+        <th>Klientas</th>
+        <th>Parduoti vnt.</th>
+        <th>Vnt. kaina</th>
+        <th>Data</th>
+      </tr>
+    {% for activity in activities %}
+      <tr>
+        <td><a href="{% url 'activity-detail' activity.pk %}">{{activity.activity_type}}</a></td>
+        <td>{{activity.customer}}</td>
+        <td>{{activity.sold_units}}</td>
+        <td>{{activity.price_per_unit}}</td>
+        <td>{{activity.date}}</td>
+      </tr>
+    {% endfor %}
+    </section>
+{% endblock %}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block title %}<title>Mini CRM</title>{% endblock %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+        <div class="container">
+            <a href="{% url 'index'%}" class="navbar-brand">Mini CRM</a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'activities'%}">Veiklos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'customers'%}">Klientai</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="login" class="nav-link">Nauja veikla</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="login" class="nav-link">Naujas klientas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout'%}?next=/crm">Atsijungti</a>
+                    </li>
+
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login'%}?next={{request.path}}">Prisijungti</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'register'%}" class="nav-link">Registruotis</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Showcase -->
+    <section class="bg-dark text-light p-5 p-lg-3 pt-lg-1 text-center text-sm-start">
+        <div class="container">
+            <div class="d-sm-flex align-items-center justify-content-between">
+                <div>
+                    <h1>Tapkite <span class="text-warning">superpardavėju!</span></h1>
+                    <p class="lead" my-4>
+                        Pažangiausia pardavimų valdymo sistema. Maža programa - dideliems pardavimams!
+                    </p>
+                </div>
+                <img class="img-fluid w-80 d-none d-sm-block" src="/static/img/minicrm.png" alt="minicrm">
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-primary text-light p-2">
+        <div class="container">
+            <div class="d-md-flex justify-content-between align-items-center">
+                  </div>
+                  
+            </div>
+        </div>
+    </section>
+
+    <div class="main">{% block content %}{% endblock %}</div>
+
+        <!-- Contact and Map -->
+        <section class="p-4" id="bottom">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-md">
+                        <h2 class="text-center mb-4">Kontaktinė informacija</h2>
+                        <ul class="list-group list-group-flush lead">
+                            <li class="list-group-item">
+                                <span class="fw-bold">Paslaugos teikėjas:</span> "Ultimate Solutions"
+                            </li>
+                            <li class="list-group-item">
+                                <span class="fw-bold">Adresas:</span> Laisvės al. 50, Kaunas
+                            </li>
+                            <li class="list-group-item">
+                                <span class="fw-bold">Telefonas:</span> +370 636 66555
+                            </li>
+                            <li class="list-group-item">
+                                <span class="fw-bold">El paštas:</span> ultimate@solutions.com
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md">
+
+                    </div>
+                </div>
+            </div>
+        </section>
