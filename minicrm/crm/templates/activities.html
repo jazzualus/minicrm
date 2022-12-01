@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load mathfilters %}
 
 {% block content %}
 <br>
@@ -11,14 +12,16 @@
         <th>Klientas</th>
         <th>Parduoti vnt.</th>
         <th>Vnt. kaina</th>
+        <th>Pajamos</th>
         <th>Data</th>
       </tr>
-    {% for activity in activities %}
+    {% for activity in activity_list %}
       <tr>
         <td><a href="{% url 'activity-detail' activity.pk %}">{{activity.activity_type}}</a></td>
         <td>{{activity.customer}}</td>
         <td>{{activity.sold_units}}</td>
-        <td>{{activity.price_per_unit}}</td>
+        <td>{{ activity.price_per_unit }}</td>
+        <td>{{ activity.price_per_unit|mul:activity.sold_units }}</td>
         <td>{{activity.date}}</td>
       </tr>
     {% endfor %}

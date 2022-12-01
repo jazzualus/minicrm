@@ -33,10 +33,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'admin_tools_stats',
-    'django_nvd3',
-    'djangobower',
+    #'admin_tools_stats',
+    #'django_nvd3',
+    #'djangobower',
     'crm',
+    'tinymce',
+    #'crm.apps.CrmConfig',
+    'mathfilters',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -129,13 +132,14 @@ LOGIN_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-BOWER_COMPONENTS_ROOT = os.path.join(PROJECT_ROOT, 'components')
+#BOWER_COMPONENTS_ROOT = os.path.join(PROJECT_ROOT, 'components')
 
-BOWER_INSTALLED_APPS = (
-    'd3#3.3.13',
-    'nvd3#1.7.1',
-)
+#BOWER_INSTALLED_APPS = (
+#    'd3#3.3.13',
+#    'nvd3#1.7.1',
+#)
 
-STATICFILES_FINDERS = (
-    'djangobower.finders.BowerFinder',
-)
+#STATICFILES_FINDERS = (
+#    'djangobower.finders.BowerFinder',
+#)
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

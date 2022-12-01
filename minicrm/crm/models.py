@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+from datetime import date
 
 
 class Region(models.Model):
@@ -28,6 +30,7 @@ class Customer(models.Model):
     contact_person = models.CharField('Kontaktinis asmuo', max_length=100)
     address = models.CharField('Adresas', max_length=200)
     email = models.EmailField(max_length=254, default='customer@customer.com',)
+    salesman = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
 
     def __str__(self):
@@ -49,8 +52,16 @@ class Activity(models.Model):
     date = models.DateField('Data')
     date_next_activity = models.DateField('Kito kontakto data')
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    salesman = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
 
     class Meta:
         verbose_name = 'Activity'
         verbose_name_plural = 'Activities'
+
+
+#class Profile(models.Model):
+#    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+#    def __str__(self):
+#        return f"{self.user.username} profilis"

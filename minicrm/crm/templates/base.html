@@ -26,6 +26,7 @@
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto">
                     {% if user.is_authenticated %}
+
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'activities'%}">Veiklos</a>
                     </li>
@@ -38,6 +39,7 @@
                     <li class="nav-item">
                         <a href="login" class="nav-link">Naujas klientas</a>
                     </li>
+                    <li class="nav-item"><a class="nav-link" href=#>{{ user.get_username }}</a></li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout'%}?next=/crm">Atsijungti</a>
                     </li>

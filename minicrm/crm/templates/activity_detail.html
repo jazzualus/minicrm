@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load mathfilters %}
 
 {% block content %}
 <br>
@@ -12,6 +13,7 @@
   <p><strong>Aprašymas:</strong> {{ activity.activity_description }}</p>
   <p><strong>Parduoti vienetai:</strong> {{ activity.sold_units }}</p>
   <p><strong>Vieneto kaina:</strong> {{ activity.price_per_unit }}</p>
+    <p><strong>Pajamos:</strong> {{ activity.price_per_unit|mul:activity.sold_units }}</p>
   <p><strong>Data:</strong> {{ activity.date }}</p>
   <p><strong>Kitos veiklos data:</strong> {{ activity.date_next_activity }}</p>
 
