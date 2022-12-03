@@ -1,12 +1,12 @@
-<{% extends "base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
+
 <br>
   <section class="logincenter">
   {% if form.errors %}
     <p>Prisijungimo klaida, bandykite dar kartą!</p>
   {% endif %}
-
   {% if next %}
     {% if user.is_authenticated %}
       <p>Neturite prieigos prie šios informacijos. Turite prisijungti.</p>
@@ -23,8 +23,6 @@
             <td>Slaptažodis: </td>
             <td>{{ form.password }}</td>
           </div>
-
-
       <input type="submit" value="Prisijungti" />
       <input type="hidden" name="next" value="{{ next }}" />
   </form>

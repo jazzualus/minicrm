@@ -34,7 +34,7 @@
                         <a class="nav-link" href="{% url 'customers'%}">Klientai</a>
                     </li>
                     <li class="nav-item">
-                        <a href="login" class="nav-link">Nauja veikla</a>
+                        <a href="{% url 'new_activity'%}" class="nav-link">Nauja veikla</a>
                     </li>
                     <li class="nav-item">
                         <a href="login" class="nav-link">Naujas klientas</a>
@@ -61,7 +61,11 @@
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <div>
+                    {% if user.is_authenticated %}
+                    <h1>Būkite <span class="text-warning">superpardavėju!</span></h1>
+                    {% else %}
                     <h1>Tapkite <span class="text-warning">superpardavėju!</span></h1>
+                    {% endif %}
                     <p class="lead" my-4>
                         Pažangiausia pardavimų valdymo sistema. Maža programa - dideliems pardavimams!
                     </p>
@@ -83,23 +87,22 @@
     <div class="main">{% block content %}{% endblock %}</div>
 
         <!-- Contact and Map -->
-        <section class="p-4" id="bottom">
+        <section class="p-2" id="bottom">
             <div class="container">
                 <div class="row g-4">
                     <div class="col-md">
-                        <h2 class="text-center mb-4">Kontaktinė informacija</h2>
-                        <ul class="list-group list-group-flush lead">
+                        <ul class="list-group-flush">
                             <li class="list-group-item">
-                                <span class="fw-bold">Paslaugos teikėjas:</span> "Ultimate Solutions"
+                                <span class="fw-bold small">Paslaugos teikėjas:</span> "Ultimate Solutions"
                             </li>
                             <li class="list-group-item">
-                                <span class="fw-bold">Adresas:</span> Laisvės al. 50, Kaunas
+                                <span class="fw-bold small">Adresas:</span> Laisvės al. 50, Kaunas
                             </li>
                             <li class="list-group-item">
-                                <span class="fw-bold">Telefonas:</span> +370 636 66555
+                                <span class="fw-bold small">Telefonas:</span> +370 636 66555
                             </li>
                             <li class="list-group-item">
-                                <span class="fw-bold">El paštas:</span> ultimate@solutions.com
+                                <span class="fw-bold small">El paštas:</span> ultimate@solutions.com
                             </li>
                         </ul>
                     </div>

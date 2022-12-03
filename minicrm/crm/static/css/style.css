@@ -7,7 +7,7 @@ body::before {
 
 .img-fluid.w-80.d-none.d-sm-block {
     display: block;
-    max-width: 15%;
+    max-width: 12%;
     height: auto;
   }
 

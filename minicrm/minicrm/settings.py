@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'crm',
     'tinymce',
     #'crm.apps.CrmConfig',
+    "admincharts",
     'mathfilters',
     'django.contrib.admin',
     'django.contrib.auth',

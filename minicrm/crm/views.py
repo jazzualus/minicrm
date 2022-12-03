@@ -93,7 +93,6 @@ def register(request):
 @login_required
 @csrf_protect
 def new_activity(request):
-
     form = ActivityForm()
     if request.method == 'POST':
         activity_type = request.POST['activity_type']
@@ -105,11 +104,14 @@ def new_activity(request):
         customer = request.POST['customer']
         #salesman = self.request.user
         form = ActivityForm(request.POST)
-        if form.is_valid():
-            Activity.objects.create_activity(activity_type=activity_type, activity_description=activity_description, sold_units=sold_units, price_per_unit=price_per_unit,
-                                     date=date, date_next_activity=date_next_activity, customer=customer)
-            form.save()
-            print(form.activity_type)
+        #if form.is_valid():
+        #activity_type=activity_type,
+        #, customer=customer
+        new_activity = Activity(activity_description=activity_description, sold_units=sold_units, price_per_unit=price_per_unit,
+                                     date=date, date_next_activity=date_next_activity)
+        #form.save()
+        new_activity.save()
+        #print(form.activity_type)
     context = {'form': form}
     return render(request, 'new_activity.html', context)
 
