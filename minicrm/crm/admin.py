@@ -34,7 +34,8 @@ class ActivityAdmin(AdminChartMixin, admin.ModelAdmin):
                     [
                         x
                         for x in queryset
-                        if x.ctime.year == b.year and x.ctime.month == b.month
+                            if x.ctime.year == b.year and x.ctime.month == b.month
+
                     ]
                 )
             )
