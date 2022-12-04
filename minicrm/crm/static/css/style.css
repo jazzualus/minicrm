@@ -17,7 +17,7 @@ body::before {
 }
 
 #bottom {
-    position: absolute;
+
     bottom: 10px;
     width: 100%
 }

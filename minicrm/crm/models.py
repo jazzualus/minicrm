@@ -52,7 +52,7 @@ class Activity(models.Model):
     date = models.DateField('Data')
     date_next_activity = models.DateField('Kito kontakto data')
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
-    salesman = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    salesman = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
 
     class Meta:
