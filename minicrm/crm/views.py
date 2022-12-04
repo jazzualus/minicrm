@@ -28,6 +28,7 @@ class ActivityListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 12
 
     def get_queryset(self):
+        print(self.request.user)
         return Activity.objects.filter(salesman=self.request.user)
 
 
@@ -106,6 +107,7 @@ def new_activity(request):
         #salesman = self.request.user
         """
         form = ActivityForm(request.POST)
+        print(request.user)
         if form.is_valid():
             #activity_type=activity_type,
         #, customer=customer
@@ -113,8 +115,12 @@ def new_activity(request):
             #new_activity = Activity(activity_description=activity_description, sold_units=sold_units, price_per_unit=price_per_unit,
             #                         date=date, date_next_activity=date_next_activity, activity_type=activity_type)
             #new_activity.save()
+            #form.salesman = request.user
+            form.cleaned_data['salesman'] = request.user
+        #form.salesman = request.user
+            print(request.user)
             form.save()
-            return render(request, 'activities.html')
+            return redirect('activities')
     context = {'form': form}
     return render(request, 'new_activity.html', context)
 
