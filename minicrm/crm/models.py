@@ -46,7 +46,7 @@ class ActivityType(models.Model):
 
 class Activity(models.Model):
     activity_type = models.ForeignKey(ActivityType, on_delete=models.CASCADE, null=True)
-    activity_description = models.TextField('Veiklos aprašymas', max_length=1000, help_text='Trumpas veiklos aprašymas')
+    activity_description = models.CharField('Veiklos aprašymas', max_length=200, help_text='Trumpas veiklos aprašymas')
     sold_units = models.IntegerField('Parduoti vienetai')
     price_per_unit = models.IntegerField('Parduoto vieneto kaina')
     date = models.DateField('Data')

@@ -104,14 +104,14 @@ def new_activity(request):
         customer = request.POST['customer']
         #salesman = self.request.user
         form = ActivityForm(request.POST)
-        #if form.is_valid():
-        #activity_type=activity_type,
+        if form.is_valid():
+            activity_type=activity_type,
         #, customer=customer
-        new_activity = Activity(activity_description=activity_description, sold_units=sold_units, price_per_unit=price_per_unit,
+            new_activity = Activity(activity_description=activity_description, sold_units=sold_units, price_per_unit=price_per_unit,
                                      date=date, date_next_activity=date_next_activity)
-        #form.save()
-        new_activity.save()
-        #print(form.activity_type)
+            new_activity.save()
+            return render(request, 'activities.html')
+
     context = {'form': form}
     return render(request, 'new_activity.html', context)
 

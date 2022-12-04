@@ -14,3 +14,7 @@ class ActivityForm(forms.ModelForm):
     class Meta:
         model = Activity
         fields = ['activity_type', 'activity_description', 'sold_units', 'price_per_unit', 'date', 'date_next_activity', 'customer']
+        widgets = {
+            'date': forms.DateInput(attrs={'type': 'date'}),
+            'date_next_activity': forms.DateInput(attrs={'type': 'date'})
+        }
