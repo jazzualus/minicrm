@@ -1,10 +1,32 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
+  <section class="center">
     <div class="content-section">
-          <h2 class="account-heading">{{ user.username }}</h2>
-          <p class="text-secondary">{{ user.email }}</p>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ user.profilis.nuotrauka.url }}">
+        <div class="media-body">
+          <h3 class="account-heading">Profilio redagavimas</h3>
+            <br>
         </div>
       </div>
-      <!-- FORM HERE -->
+       <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ u_form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <br>
+                <button class="btn btn-primary" type="submit">Atnaujinti</button>
+            </div>
+        </form>
     </div>
+  </section>
 {% endblock content %}

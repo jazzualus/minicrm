@@ -4,7 +4,7 @@
 {% block content %}
 <br>
   <section class="center">
-    <h1 style="color:darkblue">Veikla</h1>
+    <h3>Veikla</h3>
     <br>
   <h1>{{ book.title }}</h1>
 
@@ -16,7 +16,5 @@
     <p><strong>Pajamos:</strong> {{ activity.price_per_unit|mul:activity.sold_units }}</p>
   <p><strong>Data:</strong> {{ activity.date }}</p>
   <p><strong>Kitos veiklos data:</strong> {{ activity.date_next_activity }}</p>
-
-
 
 {% endblock %}

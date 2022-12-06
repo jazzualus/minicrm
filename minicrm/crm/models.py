@@ -29,7 +29,7 @@ class Customer(models.Model):
     region = models.ForeignKey(Region, on_delete=models.CASCADE)
     contact_person = models.CharField('Kontaktinis asmuo', max_length=100)
     address = models.CharField('Adresas', max_length=200)
-    email = models.EmailField(max_length=254, default='customer@customer.com',)
+    email = models.EmailField(max_length=254)
     salesman = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
 
@@ -60,8 +60,3 @@ class Activity(models.Model):
         verbose_name_plural = 'Activities'
 
 
-#class Profile(models.Model):
-#    user = models.OneToOneField(User, on_delete=models.CASCADE)
-
-#    def __str__(self):
-#        return f"{self.user.username} profilis"

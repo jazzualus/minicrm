@@ -37,9 +37,9 @@
                         <a href="{% url 'new_activity'%}" class="nav-link">Nauja veikla</a>
                     </li>
                     <li class="nav-item">
-                        <a href="login" class="nav-link">Naujas klientas</a>
+                        <a href="{% url 'new_customer'%}" class="nav-link">Naujas klientas</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href=#>{{ user.get_username }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'profile'%}">{{ user.get_username }}</a></li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout'%}?next=/crm">Atsijungti</a>
                     </li>
@@ -112,3 +112,4 @@
                 </div>
             </div>
         </section>
+<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
