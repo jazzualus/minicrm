@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from .models import Region, Status, Customer, Activity, ActivityType
 from django.views import generic
 from django.shortcuts import redirect
@@ -10,6 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from .forms import ActivityForm, CustomerForm, UserUpdateForm
 from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
 
 
 def index(request):
@@ -68,25 +68,44 @@ def register(request):
 
 
 class NewActivity(CreateView):
-
     model = Activity
     form_class = ActivityForm
     template_name = 'new_activity.html'
-    success_url = ('activities')
+    success_url = reverse_lazy('activities')
 
-    def get_from_kwargs(self):
+    def get_initial(self):
+        initial = super().get_initial()
+        initial['salesman'] = self.request.user
+        return initial.copy()
+
+    def get_form_kwargs(self):
         kwargs = super(NewActivity, self).get_form_kwargs()
-        kwargs['request'] = self.request
+        kwargs['user'] = self.request.user
         return kwargs
+
+    def form_valid(self, form):
+        return super(NewActivity, self).form_valid(form)
 
 
 """
+PALIKTA KODO DALIS ATEIČIAI JEI REIKTŲ PLĖSTI PROJEKTĄ IR PRIREIKTŲ FUNCINIO VIEWSO
+
 @login_required
 @csrf_protect
 def new_activity(request):
-    form = ActivityForm()
+    form = ActivityForm(user=request.user)
+
+    def get_form_kwargs(self):
+         Passes the request object to the form class.
+         This is necessary to only display members that belong to a given user
+
+        kwargs = super(AddMeal, self).get_form_kwargs()
+        kwargs['request'] = self.request
+        return kwargs
+    
+    
+    #form.fields.customer.queryset = Customer.objects.filter(user=request.user)
     form.fields["salesman"].initial = request.user
-    form.fields["customer"].initial = Customer.objects.filter(salesman=request.user)
     if request.method == 'POST':
         form = ActivityForm(request.POST)
         if form.is_valid():

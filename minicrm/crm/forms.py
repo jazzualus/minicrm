@@ -13,19 +13,16 @@ class UserUpdateForm(forms.ModelForm):
 
 class CustomModelMultipleChoiceField(forms.ModelMultipleChoiceField):
     def label_from_instance(self, customer):
-        """ Customises the labels for checkboxes"""
         return "%s" % customer.company
 
 
 class ActivityForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
-        self.request = kwargs.get('request')
-        print(kwargs.get('request'))
-        #"pop" was instead of "get" in the original code example
+        u = kwargs.pop('user')
         super(ActivityForm, self).__init__(*args, **kwargs)
-        self.fields['customer'].queryset = Customer.objects.filter(
-            salesman = self.request.user)
+        self.fields['customer'].queryset = Customer.objects.filter(salesman=u)
+
 
     class Meta:
         model = Activity

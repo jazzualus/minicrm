@@ -12,6 +12,7 @@ class Region(models.Model):
     class Meta:
         ordering = ['region']
 
+
 class Status(models.Model):
     status = models.CharField('Statusas', max_length=100)
 
@@ -31,7 +32,6 @@ class Customer(models.Model):
     address = models.CharField('Adresas', max_length=200)
     email = models.EmailField(max_length=254)
     salesman = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-
 
     def __str__(self):
         return self.company

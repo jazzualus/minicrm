@@ -9,10 +9,6 @@ class CustomerAdmin(admin.ModelAdmin):
     list_display = ('company', 'status', 'contact_person', 'address', 'region', 'salesman')
     list_filter = ('region', 'salesman', 'status')
 
-#class ActivityAdmin(admin.ModelAdmin):
-#    list_display = ('activity_type', 'activity_description', 'sold_units', 'price_per_unit', 'date', 'date_next_activity', 'salesman')
-#    list_filter = ('date', 'activity_type', 'salesman')
-
 
 @admin.register(Activity)
 class ActivityAdmin(AdminChartMixin, admin.ModelAdmin):
@@ -20,6 +16,8 @@ class ActivityAdmin(AdminChartMixin, admin.ModelAdmin):
     list_filter = ('date', 'activity_type', 'salesman')
 
 """
+    KODO PLĖTA ATEIČIAI GRAFINEI DALIAI ADMIN SAITE (dėl to neištrinta)
+
     def get_list_chart_data(self, queryset):
         if not queryset:
             return {}
